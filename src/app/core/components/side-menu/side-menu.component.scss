@@ -1,0 +1,10 @@
+@import "../../../../assets/styles/colors";
+
+:host {
+  border-right: 1px solid #ead8ed;
+  width: 15%;
+  height: 100%;
+  min-height: 100%;
+  background-color: $light-background;
+
+}

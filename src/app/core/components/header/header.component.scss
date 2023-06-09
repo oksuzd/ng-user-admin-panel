@@ -1,0 +1,37 @@
+@import "../../../../assets/styles/colors";
+
+:host {
+  //outline: 2px solid yellow;
+  height: 50px;
+  flex: 0 0 50px;
+  background: $main-background;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  //outline: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  &__left {
+    //outline: 2px solid blue;
+    width: 15%;
+  }
+
+  &__center {
+    //outline: 2px solid deeppink;
+    justify-content: flex-start;
+    width: 70%;
+  }
+
+  &__right {
+    //outline: 2px solid green;
+    justify-content: center;
+    width: 15%;
+  }
+}
