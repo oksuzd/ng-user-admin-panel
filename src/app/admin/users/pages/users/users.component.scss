@@ -1,0 +1,21 @@
+@import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-grid.css');
+@import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-theme-alpine.css');
+
+:host {
+  //outline: 2px solid yellow;
+  //border: 2px solid red;
+  width: 85%;
+  height: 100%;
+
+}
+
+.users-grid {
+  //outline: 2px solid blue;
+  width: 100%;
+  height: 100%;
+  //--ag-column-border-style: solid;
+  //--ag-row-border-width: 2px;
+  //--ag-row-border-color: #000;
+
+}
+

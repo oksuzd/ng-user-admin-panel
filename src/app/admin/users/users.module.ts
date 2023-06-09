@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { RouterModule, Routes } from "@angular/router";
 import { UsersComponent } from './pages/users/users.component';
+import { AgGridModule } from "ag-grid-angular";
 
 const routes: Routes = [
   {path: '', component: UsersComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    AgGridModule,
   ]
 })
 export class UsersModule { }

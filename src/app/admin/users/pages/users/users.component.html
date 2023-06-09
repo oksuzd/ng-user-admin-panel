@@ -1,1 +1,24 @@
-<p>users works!</p>
+<ag-grid-angular
+  style="width: 100%; height: calc(100%);"
+  class="ag-theme-alpine users-grid"
+  [columnDefs]="columnDefs"
+  [defaultColDef]="defaultColDef"
+  [rowData]="rowData"
+  [rowSelection]="'multiple'"
+  [animateRows]="true"
+  (gridReady)="onGridReady($event)"
+
+></ag-grid-angular>
+
+
+<!--<ag-grid-angular-->
+<!--  style="width: 100%; height: calc(100% - 25px);"-->
+<!--  class="ag-theme-alpine users-grid"-->
+<!--  [columnDefs]="columnDefs"-->
+<!--  [defaultColDef]="defaultColDef"-->
+<!--  [rowData]="rowData$ | async"-->
+<!--  [rowSelection]="'multiple'"-->
+<!--  [animateRows]="true"-->
+<!--  (gridReady)="onGridReady($event)"-->
+<!--  (cellClicked)="onCellClicked($event)"-->
+<!--&gt;</ag-grid-angular>-->
