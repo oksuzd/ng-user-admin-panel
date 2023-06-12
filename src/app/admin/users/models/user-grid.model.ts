@@ -1,8 +1,8 @@
 export interface User {
   id: number;
-  avatar: string;
-  name: string;
+  avatar?: string;
+  firstName: string;
   lastName: string;
   email: string;
-  isDeleted: boolean;
+  isDeleted?: boolean;
 }

@@ -8,7 +8,7 @@ import { CoreModule } from "./core/core.module";
 import { HomePageComponent } from './core/pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from "@angular/common/http";
+// import { HttpClientModule } from "@angular/common/http";
 
 
 
@@ -24,7 +24,7 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     CoreModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    // HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

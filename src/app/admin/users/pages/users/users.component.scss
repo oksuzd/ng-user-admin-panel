@@ -1,18 +1,30 @@
 @import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-grid.css');
 @import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-theme-alpine.css');
 
+@import "../../../../../assets/styles/colors";
+
 :host {
   //outline: 2px solid yellow;
   //border: 2px solid red;
   width: 85%;
-  height: 100%;
+  height: calc(100% - 25px);
+  padding: 15px;
 
+}
+
+.user-control-instruments {
+  text-align: right;
+  padding-bottom: 15px;
+}
+
+.add-user-button {
+  background-color: $main-background;
 }
 
 .users-grid {
   //outline: 2px solid blue;
   width: 100%;
-  height: 100%;
+  height: inherit !important;
   //--ag-column-border-style: solid;
   //--ag-row-border-width: 2px;
   //--ag-row-border-color: #000;

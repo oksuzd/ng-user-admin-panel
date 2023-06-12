@@ -1,11 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { HttpClient } from "@angular/common/http";
-import { Observable, of } from "rxjs";
+import { map, Observable, of, tap } from "rxjs";
 
 import { AgGridAngular } from "ag-grid-angular";
-import { CellClickedEvent, ColDef, GridReadyEvent } from "ag-grid-community";
-import { User } from "../../models/user.model";
+import { CellClickedEvent, ColDef, GridReadyEvent, ICellRendererParams } from "ag-grid-community";
+import { User } from "../../models/user-grid.model";
+import { UserService } from "../../services/user.service";
+
 
 
 
@@ -17,42 +19,30 @@ import { User } from "../../models/user.model";
 })
 export class UsersComponent {
 
-  // public rowData!: User[];
-
-  public  mockData: User[] = [
-    {id: 1, avatar: 'img1', name: 'Oksana', lastName: 'Chelapko', email: '123', isDeleted: false},
-    {id: 2, avatar: 'img2', name: 'Iurii', lastName: 'Suzdaltsev', email: '456', isDeleted: false},
-    {id: 3, avatar: 'img3', name: 'Harry', lastName: 'Potter', email: '789', isDeleted: true}
-  ]
-
-  // Each Column Definition results in one Column.
   public columnDefs: ColDef[] = [
-    { field: 'id', headerName: ''},
-    { field: 'name', headerName: 'Name'},
+    { field: 'id', headerName: 'ID'},
+    { field: 'avatar', headerName: 'Avatar',
+    cellRenderer: (params: ICellRendererParams) => `<img src="${params.value}" alt="avatar">`},
+    { field: 'firstName', headerName: 'Name'},
     { field: 'lastName', headerName: 'Last Name'},
     { field: 'email', headerName: 'Email' },
     { field: 'isDeleted', headerName: '' }
   ];
 
-  // DefaultColDef sets props common to all Columns
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
   };
 
-  // Data that gets displayed in the grid
-  public rowData: User[] = [];
-  // public rowData$!: Observable<any[]>;
-  // public rowData$!: Observable<User[]>;
+  public rowData$!: Observable<User[]>;
 
   // For accessing the Grid's API
   // @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
-  constructor(private http: HttpClient) {}
+  constructor(private userService: UserService) {}
 
-  // Example load data from server
   onGridReady(params: GridReadyEvent) {
-    this.rowData = this.mockData;
+    this.rowData$ = this.userService.getUsers()
   }
 
   // onGridReady(params: GridReadyEvent) {
@@ -68,5 +58,13 @@ export class UsersComponent {
   // Example using Grid's API
   // clearSelection(): void {
   //   this.agGrid.api.deselectAll();
+  // }
+
+  // ngOnInit() {
+  //   this.userService.getUsers()
+  //     .pipe(
+  //       tap((res) => console.log('test-component', res))
+  //     )
+  //     .subscribe();
   // }
 }

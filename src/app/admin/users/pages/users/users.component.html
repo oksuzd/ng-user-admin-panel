@@ -1,14 +1,20 @@
+<div class="user-control-instruments">
+  <button class="add-user-button" mat-raised-button>Add User</button>
+</div>
 <ag-grid-angular
   style="width: 100%; height: calc(100%);"
   class="ag-theme-alpine users-grid"
   [columnDefs]="columnDefs"
   [defaultColDef]="defaultColDef"
-  [rowData]="rowData"
+  [rowData]="rowData$ | async"
   [rowSelection]="'multiple'"
   [animateRows]="true"
   (gridReady)="onGridReady($event)"
 
 ></ag-grid-angular>
+
+
+
 
 
 <!--<ag-grid-angular-->
