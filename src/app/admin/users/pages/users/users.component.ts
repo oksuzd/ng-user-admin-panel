@@ -1,16 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component} from '@angular/core';
+import { Observable} from "rxjs";
 
-import { HttpClient } from "@angular/common/http";
-import { map, Observable, of, tap } from "rxjs";
-
-import { AgGridAngular } from "ag-grid-angular";
-import { CellClickedEvent, ColDef, GridReadyEvent, ICellRendererParams } from "ag-grid-community";
+import { ColDef, GridApi, GridReadyEvent, ICellRendererParams } from "ag-grid-community";
 import { User } from "../../models/user-grid.model";
 import { UserService } from "../../services/user.service";
-
-// import 'ag-grid-community/styles/ag-grid.css';
-// import 'ag-grid-community/styles/ag-theme-alpine.css';
-// import '../styles.css';
 
 
 @Component({
@@ -21,52 +14,37 @@ import { UserService } from "../../services/user.service";
 export class UsersComponent {
 
   public columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID', width: 50},
-    { field: 'avatar', headerName: 'Avatar',
+    { field: 'id', headerName: '', minWidth: 40, maxWidth: 50},
+    { field: 'avatar', headerName: '', maxWidth: 64, autoHeight: true, cellClass: 'user-avatar',
     cellRenderer: (params: ICellRendererParams) => `<img src="${params.value}" alt="avatar">`},
     { field: 'firstName', headerName: 'Name'},
     { field: 'lastName', headerName: 'Last Name'},
-    { field: 'email', headerName: 'Email' },
-    { field: 'isDeleted', headerName: '' }
+    { field: 'email', headerName: 'Email'},
+    { field: 'isDeleted', headerName: '', maxWidth: 50}
   ];
 
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
     resizable: true,
+    cellClass: 'cells-styling',
   };
 
+  private gridApi!: GridApi<User>;
   public rowData$!: Observable<User[]>;
-
-  // For accessing the Grid's API
-  // @ViewChild(AgGridAngular) agGrid!: AgGridAngular;
 
   constructor(private userService: UserService) {}
 
   onGridReady(params: GridReadyEvent) {
-    this.rowData$ = this.userService.getUsers()
+    this.gridApi = params.api;
+    this.rowData$ = this.userService.getUsers();
+    setTimeout(() => {
+      this.gridApi.sizeColumnsToFit();
+    }, 200)
   }
 
-  // onGridReady(params: GridReadyEvent) {
-  //   this.rowData$ = this.http
-  //     .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
-  // }
+  sizeToFit() {
+    this.gridApi.sizeColumnsToFit();
+  }
 
-  // Example of consuming Grid Event
-  // onCellClicked( e: CellClickedEvent): void {
-  //   console.log('cellClicked', e);
-  // }
-
-  // Example using Grid's API
-  // clearSelection(): void {
-  //   this.agGrid.api.deselectAll();
-  // }
-
-  // ngOnInit() {
-  //   this.userService.getUsers()
-  //     .pipe(
-  //       tap((res) => console.log('test-component', res))
-  //     )
-  //     .subscribe();
-  // }
 }

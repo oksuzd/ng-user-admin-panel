@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user-grid.model";
 import { UserDataResponse, UserResponse } from "../models/response.model";
-import { map, Observable, tap } from "rxjs";
+import { map, Observable} from "rxjs";
 
 @Injectable()
 export class UserService {
@@ -13,10 +13,7 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<UserResponse>(this.requestUrl)
-      .pipe(
-        tap((res) => console.log('test-service', res.data)),
-        map((res) => this.getMappedUsers(res.data))
-      )
+      .pipe(map((res) => this.getMappedUsers(res.data)))
   }
 
   getMappedUsers(users: UserDataResponse[]): User[] {

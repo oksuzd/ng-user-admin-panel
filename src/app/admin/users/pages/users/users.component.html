@@ -1,5 +1,6 @@
 <div class="user-control-instruments">
-  <button class="add-user-button" mat-raised-button>Add User</button>
+  <button class="user-control-button" mat-raised-button (click)="sizeToFit()">Size to Fit</button>
+  <button class="user-control-button" mat-raised-button>Add User</button>
 </div>
 <ag-grid-angular
   style="width: 100%; height: calc(100%);"
@@ -10,7 +11,6 @@
   [rowSelection]="'multiple'"
   [animateRows]="true"
   (gridReady)="onGridReady($event)"
-
 ></ag-grid-angular>
 
 
