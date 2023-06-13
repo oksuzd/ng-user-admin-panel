@@ -8,8 +8,9 @@ import { CellClickedEvent, ColDef, GridReadyEvent, ICellRendererParams } from "a
 import { User } from "../../models/user-grid.model";
 import { UserService } from "../../services/user.service";
 
-
-
+// import 'ag-grid-community/styles/ag-grid.css';
+// import 'ag-grid-community/styles/ag-theme-alpine.css';
+// import '../styles.css';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { UserService } from "../../services/user.service";
 export class UsersComponent {
 
   public columnDefs: ColDef[] = [
-    { field: 'id', headerName: 'ID'},
+    { field: 'id', headerName: 'ID', width: 50},
     { field: 'avatar', headerName: 'Avatar',
     cellRenderer: (params: ICellRendererParams) => `<img src="${params.value}" alt="avatar">`},
     { field: 'firstName', headerName: 'Name'},
@@ -32,6 +33,7 @@ export class UsersComponent {
   public defaultColDef: ColDef = {
     sortable: true,
     filter: true,
+    resizable: true,
   };
 
   public rowData$!: Observable<User[]>;

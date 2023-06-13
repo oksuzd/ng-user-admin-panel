@@ -1,6 +1,9 @@
 @import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-grid.css');
 @import url('https://unpkg.com/ag-grid-community@28.2.0/styles/ag-theme-alpine.css');
 
+//@use "~ag-grid-community/styles" as ag;
+//@include ag.grid-styles();
+
 @import "../../../../../assets/styles/colors";
 
 :host {
@@ -30,4 +33,16 @@
   //--ag-row-border-color: #000;
 
 }
-
+.ag-header-cell {
+  /* or with CSS selectors targeting grid DOM elements */
+  background-color: red !important;
+}
+//.ag-theme-alpine {
+//  /* disable all borders */
+//  --ag-borders: none;
+//  /* then add back a border between rows */
+//  --ag-row-border-style: dashed;
+//  --ag-row-border-width: 5px;
+//  --ag-row-border-color: rgb(150, 150, 200);
+//}
+//
