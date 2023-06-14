@@ -7,6 +7,7 @@ import { AgGridModule } from "ag-grid-angular";
 import { SharedModule } from "../../shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { UserService } from "./services/user.service";
+import { AgRowDeleteComponent } from './grid-components/ag-row-delete/ag-row-delete.component';
 
 const routes: Routes = [
   {path: '', component: UsersComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AddUserComponent,
-    UsersComponent
+    UsersComponent,
+    AgRowDeleteComponent
   ],
   imports: [
     CommonModule,

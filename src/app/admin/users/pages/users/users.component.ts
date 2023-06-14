@@ -2,8 +2,9 @@ import { Component} from '@angular/core';
 import { Observable} from "rxjs";
 
 import { ColDef, GridApi, GridReadyEvent, ICellRendererParams } from "ag-grid-community";
-import { User } from "../../models/user-grid.model";
+import { User, UserCellsParams } from "../../models/user-grid.model";
 import { UserService } from "../../services/user.service";
+import { AgRowDeleteComponent } from "../../grid-components/ag-row-delete/ag-row-delete.component";
 
 
 @Component({
@@ -13,6 +14,9 @@ import { UserService } from "../../services/user.service";
 })
 export class UsersComponent {
 
+  private gridApi!: GridApi<User>;
+  public rowData$!: Observable<User[]>;
+
   public columnDefs: ColDef[] = [
     { field: 'id', headerName: '', minWidth: 40, maxWidth: 50},
     { field: 'avatar', headerName: '', maxWidth: 64, autoHeight: true, cellClass: 'user-avatar',
@@ -20,7 +24,10 @@ export class UsersComponent {
     { field: 'firstName', headerName: 'Name'},
     { field: 'lastName', headerName: 'Last Name'},
     { field: 'email', headerName: 'Email'},
-    { field: 'isDeleted', headerName: '', maxWidth: 50}
+    { field: 'id', headerName: '', maxWidth: 70, cellClass: 'cells-styling__center',
+      cellRenderer: AgRowDeleteComponent,
+      // cellRendererParams: {userId: 10 } as UserCellsParams
+    }
   ];
 
   public defaultColDef: ColDef = {
@@ -29,9 +36,6 @@ export class UsersComponent {
     resizable: true,
     cellClass: 'cells-styling',
   };
-
-  private gridApi!: GridApi<User>;
-  public rowData$!: Observable<User[]>;
 
   constructor(private userService: UserService) {}
 

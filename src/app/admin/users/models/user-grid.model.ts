@@ -6,3 +6,7 @@ export interface User {
   email: string;
   isDeleted?: boolean;
 }
+
+export interface UserCellsParams {
+  userId?: number | undefined;
+}

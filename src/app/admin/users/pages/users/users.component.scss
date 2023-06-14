@@ -19,6 +19,12 @@
         align-items: center;
         border-left: 1px solid #dde2eb;
         border-right: 1px solid #dde2eb;
+
+        &__center {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
       }
       .user-avatar {
         padding: 0 !important;
@@ -41,4 +47,12 @@
 .user-control-button {
   margin-left: 15px;
   background-color: $main-background;
+}
+
+.user-delete-button {
+  outline: 2px solid black;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
 }
