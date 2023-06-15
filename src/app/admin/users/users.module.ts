@@ -8,6 +8,7 @@ import { SharedModule } from "../../shared/shared.module";
 import { HttpClientModule } from "@angular/common/http";
 import { UserService } from "./services/user.service";
 import { AgRowDeleteComponent } from './grid-components/ag-row-delete/ag-row-delete.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '', component: UsersComponent},
@@ -25,6 +26,8 @@ const routes: Routes = [
     SharedModule,
     AgGridModule,
     HttpClientModule,
+    FormsModule
+
   ],
   providers: [UserService]
 })

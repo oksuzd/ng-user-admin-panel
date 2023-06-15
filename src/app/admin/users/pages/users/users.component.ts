@@ -5,6 +5,9 @@ import { ColDef, GridApi, GridReadyEvent, ICellRendererParams } from "ag-grid-co
 import { User, UserCellsParams } from "../../models/user-grid.model";
 import { UserService } from "../../services/user.service";
 import { AgRowDeleteComponent } from "../../grid-components/ag-row-delete/ag-row-delete.component";
+import { DialogWindowComponent } from "../../../../shared/components/dialog-window/dialog-window.component";
+import { MatDialog } from "@angular/material/dialog";
+import { AddUserComponent } from "../../components/add-user/add-user.component";
 
 
 @Component({
@@ -55,7 +58,10 @@ export class UsersComponent implements OnDestroy {
     cellClass: 'cells-styling',
   };
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    public dialog: MatDialog
+  ) {
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -71,6 +77,16 @@ export class UsersComponent implements OnDestroy {
           this.gridApi.sizeColumnsToFit();
         }, 200)
       });
+  }
+
+  addUser() {
+    const dialogRef = this.dialog.open(AddUserComponent, {width: '260px'});
+    dialogRef.afterClosed()
+      .subscribe((res) => {
+        if (!!res) {
+          console.log('add success', res);
+        }
+      })
   }
 
   sizeToFit() {

@@ -1,1 +1,28 @@
-<p>add-user works!</p>
+<div class="dialog-wrap">
+  <h1 mat-dialog-title>Adding the User</h1>
+  <div mat-dialog-content>
+    <form>
+      <mat-form-field>
+        <mat-label class="dialog-wrap_label">First Name</mat-label>
+        <input class="dialog-wrap_input" matInput [(ngModel)]="firstNameValue" name="firstNameValue"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label class="dialog-wrap_label">Last Name</mat-label>
+        <input class="dialog-wrap_input" matInput [(ngModel)]="lastNameValue" name="lastNameValue"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label class="dialog-wrap_label">Email</mat-label>
+        <input class="dialog-wrap_input" type="email" matInput [(ngModel)]="emailValue" name="emailValue"
+        />
+      </mat-form-field>
+      <div class="dialog-wrap_buttons-group">
+        <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
+        <button mat-button [mat-dialog-close]="true">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+

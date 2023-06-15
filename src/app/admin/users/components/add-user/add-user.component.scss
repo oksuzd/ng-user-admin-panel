@@ -1,0 +1,37 @@
+@import "../../../../../assets/styles/colors";
+
+.dialog-wrap {
+  background-color: $light-background;
+
+  h1 {
+    text-align: center;
+    color: $main-background;
+    font-weight: bold;
+  }
+
+  &_input, &_label {
+    color: black !important;
+  }
+
+  &_buttons-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+
+    button {
+      min-width: 70px;
+      background-color: $main-background;
+    }
+  }
+
+  ::ng-deep {
+    .mdc-text-field--filled {
+      background-color: #e5d2e8;
+    }
+  }
+}
+
+
+
+
+
