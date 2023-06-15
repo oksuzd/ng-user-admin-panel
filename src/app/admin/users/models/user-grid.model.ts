@@ -7,6 +7,6 @@ export interface User {
   isDeleted?: boolean;
 }
 
-export interface UserCellsParams {
-  userId?: number | undefined;
+export interface UserCellsParams<T = any> {
+  onDelete: (entity: T) => void;
 }

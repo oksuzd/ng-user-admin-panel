@@ -7,6 +7,7 @@ import { map, Observable} from "rxjs";
 @Injectable()
 export class UserService {
   readonly requestUrl = 'https://reqres.in/api/users';
+  // readonly unknownRequestUrl = 'https://reqres.in/api/unknown';
 
   constructor(private http: HttpClient) {
   }
@@ -29,8 +30,12 @@ export class UserService {
     })
   }
 
-  deleteUser(id: number) {
+  // request404(): Observable<void> {
+  //   return this.http.get<any>(this.unknownRequestUrl + `/23`)
+  // }
 
+  deleteUser(id: number): Observable<void> {
+    return this.http.delete<any>(this.requestUrl + `${id}`);
   }
 
 }
