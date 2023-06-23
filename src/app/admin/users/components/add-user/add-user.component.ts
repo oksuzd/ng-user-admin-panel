@@ -9,10 +9,6 @@ import { User } from "../../models/user-grid.model";
 })
 export class AddUserComponent {
 
-  firstNameValue: string = '';
-  lastNameValue: string = '';
-  emailValue: string = '';
-
   newUser: User = {
     id: 0,
     firstName: '',
@@ -20,12 +16,9 @@ export class AddUserComponent {
     email: '',
   }
 
-  constructor(public dialogRef: MatDialogRef<AddUserComponent>) {
-  }
+  constructor(public dialogRef: MatDialogRef<AddUserComponent>) {}
 
-  onNoClick(): void {
-
-     console.log(this.newUser)
+  onCancelClick(): void {
     this.dialogRef.close();
   }
 }

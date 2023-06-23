@@ -4,21 +4,21 @@
     <form>
       <mat-form-field>
         <mat-label class="dialog-wrap_label">First Name</mat-label>
-        <input class="dialog-wrap_input" matInput [(ngModel)]="firstNameValue" name="firstNameValue"/>
+        <input class="dialog-wrap_input" matInput [(ngModel)]="newUser.firstName" name="firstNameValue"/>
       </mat-form-field>
       <mat-form-field>
         <mat-label class="dialog-wrap_label">Last Name</mat-label>
-        <input class="dialog-wrap_input" matInput [(ngModel)]="lastNameValue" name="lastNameValue"
+        <input class="dialog-wrap_input" matInput [(ngModel)]="newUser.lastName" name="lastNameValue"
         />
       </mat-form-field>
       <mat-form-field>
         <mat-label class="dialog-wrap_label">Email</mat-label>
-        <input class="dialog-wrap_input" type="email" matInput [(ngModel)]="emailValue" name="emailValue"
+        <input class="dialog-wrap_input" type="email" matInput [(ngModel)]="newUser.email" name="emailValue"
         />
       </mat-form-field>
       <div class="dialog-wrap_buttons-group">
-        <button mat-button (click)="onNoClick()" cdkFocusInitial>Cancel</button>
-        <button mat-button [mat-dialog-close]="true">Add</button>
+        <button mat-button (click)="onCancelClick()" cdkFocusInitial>Cancel</button>
+        <button mat-button [mat-dialog-close]="newUser">Add</button>
       </div>
     </form>
   </div>

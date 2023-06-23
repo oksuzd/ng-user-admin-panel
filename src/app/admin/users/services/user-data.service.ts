@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { User } from "../models/user-grid.model";
 import { UserDataResponse, UserResponse } from "../models/response.model";
-import { map, Observable} from "rxjs";
+import { map, Observable, of } from "rxjs";
+import { MatDialog } from "@angular/material/dialog";
+
 
 @Injectable()
-export class UserService {
-  readonly requestUrl = 'https://reqres.in/api/users';
-  // readonly unknownRequestUrl = 'https://reqres.in/api/unknown';
+export class UserDataService {
 
-  constructor(private http: HttpClient) {
-  }
+  readonly requestUrl = 'https://reqres.in/api/users';
+
+  constructor(
+    private http: HttpClient,
+    public dialog: MatDialog
+  ) {}
 
   getUsers(): Observable<User[]> {
     return this.http.get<UserResponse>(this.requestUrl)
@@ -30,6 +34,14 @@ export class UserService {
     })
   }
 
+  createUser(user: User): Observable<User> {
+    return of({
+      ...user,
+      id: Math.floor(Math.random() * 100),
+      avatar: 'https://i.pravatar.cc/64'
+    })
+  }
+
   // request404(): Observable<void> {
   //   return this.http.get<any>(this.unknownRequestUrl + `/23`)
   // }
@@ -37,5 +49,4 @@ export class UserService {
   deleteUser(id: number): Observable<void> {
     return this.http.delete<any>(this.requestUrl + `${id}`);
   }
-
 }
